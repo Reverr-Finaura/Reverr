@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import React from 'react';
 import AppColors from '../../Constaint/AppColors';
 import Backbtn from '../../Componants/Backbtn';
@@ -9,32 +9,34 @@ const ForgotPassword = () => {
 
     const navigation = useNavigation();
     return (
-        <View style={styles.screen}>
-            <View style={{ marginTop: 10 }}>
-                <Backbtn onPress={() => { navigation.goBack() }} />
-            </View>
-            <View style={styles.pageInfo}>
-                <Text style={[styles.Text, { fontSize: 24, color: AppColors.FontsColor, marginBottom: 13 }]}>Forget Password</Text>
-                <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>Please receive your password reset </Text>
-                <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>instructions</Text>
-            </View>
-            <View style={styles.container}>
-                <Text style={styles.inputHeader}>Email/Phone No.</Text>
-                <TextInput style={styles.input} placeholder='Your email/Phone no.' placeholderTextColor={AppColors.infoFonts} />
-                <CustomBtn
-                    Title="Send Password"
-                    style={{ marginTop: 20 }}
-                    onPress={() => {
-                        navigation.navigate("Otp")
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
+            <View style={styles.screen}>
+                <View style={{ marginTop: 10 }}>
+                    <Backbtn onPress={() => { navigation.goBack() }} />
+                </View>
+                <View style={styles.pageInfo}>
+                    <Text style={[styles.Text, { fontSize: 24, color: AppColors.FontsColor, marginBottom: 13 }]}>Forget Password</Text>
+                    <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>Please receive your password reset </Text>
+                    <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>instructions</Text>
+                </View>
+                <View style={styles.container}>
+                    <Text style={styles.inputHeader}>Email/Phone No.</Text>
+                    <TextInput style={styles.input} placeholder='Your email/Phone no.' placeholderTextColor={AppColors.infoFonts} />
+                    <CustomBtn
+                        Title="Send Password"
+                        style={{ marginTop: 20 }}
+                        onPress={() => {
+                            navigation.navigate("Otp")
 
-                    }}
-                />
-                <TouchableOpacity onPress={() => { navigation.navigate("Login") }}>
-                    <Text style={[styles.inputHeader, { fontSize: 12, alignSelf: 'center', marginTop: 20 }]}>I remember the password</Text>
-                </TouchableOpacity>
-            </View>
+                        }}
+                    />
+                    <TouchableOpacity onPress={() => { navigation.navigate("Login") }}>
+                        <Text style={[styles.inputHeader, { fontSize: 12, alignSelf: 'center', marginTop: 20 }]}>I remember the password</Text>
+                    </TouchableOpacity>
+                </View>
 
-        </View>
+            </View>
+        </TouchableWithoutFeedback>
     );
 };
 
@@ -62,6 +64,7 @@ const styles = StyleSheet.create({
     input: {
         fontSize: 14,
         marginStart: 20,
+        paddingStart: 10,
         color: AppColors.FontsColor,
         paddingTop: 0,
         fontFamily: "Poppins-Regular",

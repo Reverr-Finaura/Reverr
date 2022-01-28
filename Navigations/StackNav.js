@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Splash from '../Screens/Splash';
 import LoginScreen from '../Screens/LoginScreen';
 import SignupScreen from '../Screens/SignupScreen';
+import BottomTab from './BottomTab';
 import UserSelectcreen from '../Screens/UserSelectcreen';
 import ForgotPassword from '../Screens/ForgotPasswordScreens/ForgotPassword';
 import OtpScreen from '../Screens/ForgotPasswordScreens/OtpScreen';
@@ -28,6 +29,8 @@ const StackNav = () => {
                 <StackNavigation.Screen name='Otp' component={OtpScreen}
                     options={{ headerShown: false }} />
                 <StackNavigation.Screen name='Reset' component={ResetPassword}
+                    options={{ headerShown: false }} />
+                <StackNavigation.Screen name='home' component={BottomTab}
                     options={{ headerShown: false }} />
             </StackNavigation.Navigator>
         </NavigationContainer>

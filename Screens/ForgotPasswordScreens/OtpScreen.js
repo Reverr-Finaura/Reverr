@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import React from 'react';
 import AppColors from '../../Constaint/AppColors';
 import { useNavigation } from '@react-navigation/native'
@@ -9,31 +9,33 @@ const OtpScreen = () => {
     const navigation = useNavigation();
 
     return (
-        <View style={styles.screen}>
-            <View style={{ marginTop: 10 }}>
-                <Backbtn onPress={() => { navigation.goBack() }} />
-            </View>
-            <View style={styles.pageInfo}>
-                <Text style={[styles.Text, { fontSize: 24, color: AppColors.FontsColor, marginBottom: 13 }]}>Confirmation</Text>
-                <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>Please enter the vertification code </Text>
-                <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>from the sms we just send you</Text>
-            </View>
-            <View style={styles.container}>
-                <Text style={styles.inputHeader}>OTP</Text>
-                <TextInput style={styles.input} placeholder='code' placeholderTextColor={AppColors.infoFonts} />
-                <CustomBtn
-                    Title="Confirm"
-                    style={{ marginTop: 20 }}
-                    onPress={() => { navigation.navigate("Reset") }}
-                />
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 30 }}>
-                    <Text style={{ color: AppColors.infoFonts }}>Don’t get it? </Text>
-                    <TouchableOpacity>
-                        <Text style={[styles.inputHeader, { fontSize: 12, marginStart: 0, marginTop: 10 }]}>Resend code</Text>
-                    </TouchableOpacity>
+        <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
+            <View style={styles.screen}>
+                <View style={{ marginTop: 10 }}>
+                    <Backbtn onPress={() => { navigation.goBack() }} />
+                </View>
+                <View style={styles.pageInfo}>
+                    <Text style={[styles.Text, { fontSize: 24, color: AppColors.FontsColor, marginBottom: 13 }]}>Confirmation</Text>
+                    <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>Please enter the vertification code </Text>
+                    <Text style={[styles.Text, { fontSize: 14, color: AppColors.infoFonts }]}>from the sms we just send you</Text>
+                </View>
+                <View style={styles.container}>
+                    <Text style={styles.inputHeader}>OTP</Text>
+                    <TextInput style={styles.input} placeholder='code' placeholderTextColor={AppColors.infoFonts} />
+                    <CustomBtn
+                        Title="Confirm"
+                        style={{ marginTop: 20 }}
+                        onPress={() => { navigation.navigate("Reset") }}
+                    />
+                    <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 30 }}>
+                        <Text style={{ color: AppColors.infoFonts }}>Don’t get it? </Text>
+                        <TouchableOpacity>
+                            <Text style={[styles.inputHeader, { fontSize: 12, marginStart: 0, marginTop: 10 }]}>Resend code</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     );
 };
 const styles = StyleSheet.create({

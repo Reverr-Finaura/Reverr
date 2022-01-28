@@ -1,17 +1,22 @@
 import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import AppColors from '../Constaint/AppColors';
 import { useNavigation } from '@react-navigation/native';
+import { AuthContext } from '../Navigations/AuthProvider';
 
 const Height = Dimensions.get("window").height;
 const Width = Dimensions.get("window").width;
 
+
 const Splash = () => {
 
     const navigation = useNavigation();
+    const [user, setUser] = useState(AuthContext);
 
-    setTimeout(() => {
+    user ? setTimeout(() => {
         navigation.replace("Login")
+    }, 2000) : setTimeout(() => {
+        navigation.replace("BottomTab")
     }, 2000);
 
 

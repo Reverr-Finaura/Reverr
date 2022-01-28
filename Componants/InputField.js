@@ -10,7 +10,7 @@ const InputField = (props) => {
             <View style={{ ...styles.box, ...props.style }}>
                 <Icon name={props.iconName} size={props.size} color={"white"} style={{ marginStart: 15 }} />
                 <View>
-                    <Text style={styles.heading} >{props.Title}</Text>
+                    <Text style={[styles.heading, { color: props.error ? "red" : AppColors.FontsColor }]} >{props.Title}</Text>
                     <TextInput
                         style={styles.input}
                         placeholder={props.placeholder}
@@ -18,15 +18,13 @@ const InputField = (props) => {
                         onChangeText={props.onChangeText}
                         secureTextEntry={props.secureTextEntry}
                         keyboardType={props.keyboardType}
-                        maxLength={props.maxLength}
-                    />
+                        value={props.value}
+                        maxLength={props.maxLength} />
                 </View>
                 <TouchableOpacity onPress={props.Eyelick}>
-                    <Icon name={props.showIcon} size={props.showIconsize} color={props.showIconolor} style={{ marginStart: 20 }} />
+                    <Icon name={props.showIcon} size={props.showIconsize} color={props.showIconolor} style={{ paddingStart: 50 }} />
                 </TouchableOpacity>
-
             </View>
-
         </View>
     );
 };
@@ -52,9 +50,9 @@ const styles = StyleSheet.create({
     },
     input: {
         fontSize: 13,
-        marginStart: 20,
         color: AppColors.FontsColor,
         paddingTop: 0,
+        paddingStart: 20,
         fontFamily: "Poppins-Regular",
         marginTop: -5,
         paddingBottom: 0,

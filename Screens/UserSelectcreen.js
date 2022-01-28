@@ -1,22 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import React, { useEffect } from 'react';
+import React, { useState, } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import AppColors from '../Constaint/AppColors';
 import Backbtn from '../Componants/Backbtn';
-
 
 const UserSelectcreen = () => {
 
     const navigation = useNavigation();
 
-    useEffect(() => {
 
-        navigation.setOptions({
-
-        })
-
-
-    }, []);
 
     return (
         <View style={styles.screen}>
@@ -30,7 +22,9 @@ const UserSelectcreen = () => {
             <View style={styles.ButtonsContainer}>
                 <TouchableOpacity activeOpacity={0.6} style={styles.button}
                     onPress={() => {
-                        navigation.navigate("Signup")
+                        navigation.navigate("Signup", {
+                            UserType: "Individual"
+                        })
                     }}
                 >
                     <Text style={styles.btnTitle}>Individual</Text>
@@ -38,7 +32,10 @@ const UserSelectcreen = () => {
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={0.6} style={styles.button}
                     onPress={() => {
-                        navigation.navigate("Signup")
+                        navigation.navigate("Signup", {
+                            UserType: "Startup"
+                        })
+
                     }}
                 >
                     <Text style={styles.btnTitle}>Startup</Text>
@@ -46,7 +43,9 @@ const UserSelectcreen = () => {
                 </TouchableOpacity>
                 <TouchableOpacity activeOpacity={0.6} style={styles.button}
                     onPress={() => {
-                        navigation.navigate("Signup")
+                        navigation.navigate("Signup", {
+                            UserType: "Mentor"
+                        })
                     }}
                 >
                     <Text style={styles.btnTitle}>Mentor</Text>
@@ -94,7 +93,8 @@ const styles = StyleSheet.create({
     btnTitle: {
         color: AppColors.FontsColor,
         fontFamily: "Poppins-Regular",
-        fontSize: 20
+        fontSize: 20,
+        marginTop: 10
     },
     btnInfo: {
         color: AppColors.infoFonts,

@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from '../Screens/Home';
+import Splash from '../Screens/Splash';
+import BottomTab from './BottomTab';
 
 
 const StackNavigation = createNativeStackNavigator();
@@ -11,7 +12,9 @@ const AppStackNav = () => {
     return (
         <NavigationContainer>
             <StackNavigation.Navigator>
-                <StackNavigation.Screen name='Home' component={Home}
+                <StackNavigation.Screen name='Splash' component={Splash}
+                    options={{ headerShown: false }} />
+                <StackNavigation.Screen name='BottomTab' component={BottomTab}
                     options={{ headerShown: false }} />
             </StackNavigation.Navigator>
         </NavigationContainer>
