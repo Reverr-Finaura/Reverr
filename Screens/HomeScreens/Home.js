@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import Header from '../../Componants/HomeScreenComponants/Header';
 import AppColors from '../../Constaint/AppColors';
 import { AuthContext } from '../../Navigations/AuthProvider';
@@ -10,9 +10,6 @@ const Home = () => {
     return (
         <View style={styles.screen}>
             <Header
-                onPress={() => {
-                    logout();
-                }}
             />
             <Text></Text>
         </View>
