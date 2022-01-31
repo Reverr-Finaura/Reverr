@@ -9,7 +9,10 @@ import UserSelectcreen from '../Screens/UserSelectcreen';
 import ForgotPassword from '../Screens/ForgotPasswordScreens/ForgotPassword';
 import OtpScreen from '../Screens/ForgotPasswordScreens/OtpScreen';
 import ResetPassword from '../Screens/ForgotPasswordScreens/ResetPassword';
+<<<<<<< HEAD
 import emailVerify from '../Screens/emailVerify';
+=======
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
 
 const StackNavigation = createNativeStackNavigator();
 
@@ -29,8 +32,11 @@ const StackNav = () => {
                     options={{ headerShown: false }} />
                 <StackNavigation.Screen name='Otp' component={OtpScreen}
                     options={{ headerShown: false }} />
+<<<<<<< HEAD
                 <StackNavigation.Screen name='emailVerify' component={emailVerify}
                     options={{ headerShown: false }} />
+=======
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
                 <StackNavigation.Screen name='Reset' component={ResetPassword}
                     options={{ headerShown: false }} />
                 <StackNavigation.Screen name='home' component={BottomTab}

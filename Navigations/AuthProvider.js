@@ -13,6 +13,7 @@ export const AuthProvider = ({ children }) => {
                 setUser,
                 login: async (email, password) => {
                     try {
+<<<<<<< HEAD
                         await auth().signInWithEmailAndPassword(email, password);
                     } catch (e) {
                         if(e.code==='auth/wrong-password'){
@@ -21,21 +22,33 @@ export const AuthProvider = ({ children }) => {
                         if(e.code==='auth/user-not-found'){
                             alert("No user registered with that email");
                         }
+=======
+                        await auth().signInWithEmailAndPassword(email, password)
+                    } catch (e) {
+                        console.log(e);
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
                     }
                 },
                 register: async (email, password) => {
                     try {
                         await auth().createUserWithEmailAndPassword(email, password)
+<<<<<<< HEAD
                         // .then(()=>{
                         //     console.log(auth().currentUser);
                         // })
+=======
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
                     } catch (e) {
                         if (e.code === 'auth/email-already-in-use') {
                             alert("Email id already used")
                         }
 
                         if (e.code === 'auth/invalid-email') {
+<<<<<<< HEAD
                             alert("Invalid-email !")
+=======
+                            alert("invalid-email !")
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
                         }
 
                         console.error(error);

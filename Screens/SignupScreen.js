@@ -1,12 +1,21 @@
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Keyboard, TouchableWithoutFeedback } from 'react-native';
+<<<<<<< HEAD
 import React, { useState, useContext, useEffect } from 'react';
+=======
+import React, { useState, useContext } from 'react';
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
 import AppColors from '../Constaint/AppColors';
 import InputField from '../Componants/InputField';
 import CustomBtn from '../Componants/CustomBtn';
 import Backbtn from '../Componants/Backbtn';
 import firestore from '@react-native-firebase/firestore';
+<<<<<<< HEAD
 import { useNavigation } from '@react-navigation/native';
 import emailjs from "emailjs-com";
+=======
+import { AuthContext } from '../Navigations/AuthProvider';
+import { useNavigation } from '@react-navigation/native';
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
 
 const SignupScreen = (props) => {
 
@@ -23,7 +32,11 @@ const SignupScreen = (props) => {
     const [mobile, setmobile] = useState("");
     const [moberror, setmoberror] = useState(false);
     const navigation = useNavigation();
+<<<<<<< HEAD
 
+=======
+    const { register } = useContext(AuthContext);
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
 
     // Get UserType from UserSelectScreen
     const UserType = props.route.params.UserType;
@@ -35,9 +48,14 @@ const SignupScreen = (props) => {
         Password: password,
         Mobile: mobile
     }
+<<<<<<< HEAD
     
     //console.log(data)
     const IsEmpty = async() => {
+=======
+    //console.log(data)
+    const IsEmpty = () => {
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
 
         if (name === "") {
             setnameerror(true);
@@ -58,6 +76,7 @@ const SignupScreen = (props) => {
                             if (password != ConfermPass) {
                                 alert("Password not matched!!")
                             } else {
+<<<<<<< HEAD
                                 const savedUser = await firestore().collection('Users').doc(email).get();
                                 if(savedUser._data != undefined){
                                     alert("user already exists with that email");
@@ -72,6 +91,10 @@ const SignupScreen = (props) => {
                                     setmobile("");
                                 }
                                 
+=======
+
+                                CreateUser();
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
                             }
                         }
                     }
@@ -80,6 +103,7 @@ const SignupScreen = (props) => {
         }
     };
 
+<<<<<<< HEAD
     const EmailOtp = ()=>{
         const OTP = Math.floor((Math.random() * 1000000) + 1);
         const msg = "Your OTP for verification is "+OTP;
@@ -103,6 +127,122 @@ const SignupScreen = (props) => {
          
     }
 
+=======
+    const CreateUser = () => {
+        if (data.userType === "Individual") {
+            firestore()
+                .collection('Users')
+                .doc(email)
+                .set({
+                    ...data,
+                    image: "",
+                    membership: "none",
+                    liked: [],
+                    likes: [],
+                    matched: [],
+                    TotalLikes: 20,
+                    Totalhandshakes: 1,
+                    notification: [],
+                    mentors: [],
+                    about: "",
+                    education: {
+                        type: "",
+                        school: ""
+                    },
+                    skills: [],
+                    industry: "",
+                    designation: "",
+                    linkedin: "",
+                    experience: {
+                        position: "",
+                        company: "",
+                        tenure: ""
+                    },
+                    lookingFor: []
+                })
+                .then(() => {
+
+                    register(email, password);
+                    setname("");
+                    setemail("");
+                    setpassword("");
+                    setConfermPass("");
+                    setmobile("")
+                    alert("Signup Sucessfully..!");
+
+                });
+
+        } else if (data.userType === "Startup") {
+            firestore()
+                .collection('Users')
+                .doc(email)
+                .set({
+                    ...data,
+                    image: "",
+                    membership: "none",
+                    liked: [],
+                    likes: [],
+                    matched: [],
+                    TotalLikes: 20,
+                    Totalhandshakes: 1,
+                    notification: [],
+                    mentors: [],
+                    about: "",
+                    industry: "",
+                    designation: "",
+                    linkedin: "",
+                    lookingFor: [],
+                    founders: [],
+                    website: "",
+                    operationsFrom: "",
+                    memeberNo: "none",
+                    stage: ""
+                })
+                .then(() => {
+                    register(email, password);
+                    setname("");
+                    setemail("");
+                    setpassword("");
+                    setConfermPass("");
+                    setmobile("")
+                    alert("Signup Sucessfully..!");
+
+                });
+        } else if (data.userType === "Mentor") {
+
+            firestore()
+                .collection('Users')
+                .doc(email)
+                .set({
+                    ...data,
+                    image: "",
+                    notification: [],
+                    clients: [],
+                    about: "",
+                    industry: "",
+                    linkedin: "",
+                    experience: "",
+                    reviews: [],
+                    rating: 0,
+                    totalRating: 0,
+                    plans: [],
+                })
+                .then(() => {
+                    register(email, password);
+                    setname("");
+                    setemail("");
+                    setpassword("");
+                    setConfermPass("");
+                    setmobile("")
+                    alert("Signup Sucessfully..!");
+
+                });
+        }
+
+    }
+
+
+>>>>>>> 82b3d9ac0503789985bd6b597a8263ae4dcd393b
     return (
         <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
             <View style={styles.screen}>
